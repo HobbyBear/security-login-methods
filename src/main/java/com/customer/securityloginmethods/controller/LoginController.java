@@ -7,10 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author xch
@@ -28,6 +25,13 @@ public class LoginController {
         loginService.login(userInfo.getUsername(),userInfo.getPassword());
         return ResponseBean.builder().code(0).msg("登陆成功").build();
     }
+
+    @GetMapping("/logOut")
+    public ResponseBean logOut(){
+        SecurityContextHolder.clearContext();
+        return ResponseBean.builder().code(0).msg("退出成功").build();
+    }
+
 
     @PreAuthorize("hasAnyRole('admin')")
     @RequestMapping("adminAccess")

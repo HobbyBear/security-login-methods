@@ -15,10 +15,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private AjaxAccessDeniedHandler deniedHandler;
+    private SecurityAccessDeniedHandler deniedHandler;
 
     @Autowired
-    private AjaxAuthenticationEntryPoint authenticationEntryPoint;
+    private SecurityAuthenticationEntryPoint authenticationEntryPoint;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

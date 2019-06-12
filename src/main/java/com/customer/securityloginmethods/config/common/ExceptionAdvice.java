@@ -30,7 +30,7 @@ public class ExceptionAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(CustomerException.class)
     public ResponseBean handel400(CustomerException e){
-        return ResponseBean.builder().code(e.getCode()).msg(e.getMsg()).build();
+        return ResponseBean.builder().code(e.getCode()).msg(e.getMessage()).build();
     }
 
     /**
