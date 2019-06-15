@@ -1,26 +1,43 @@
 package com.customer.securityloginmethods.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
+/**
+ * @author 19624
+ */
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Table(name = "user_info")
-public class UserInfo implements Serializable {
-  private static final long serialVersionUID = 1L;
+@DynamicUpdate
+public class UserInfo {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id", insertable = false, nullable = false)
-  private Integer id;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @Column(name = "username")
-  private String username;
 
-  @Column(name = "password")
-  private String password;
+    @Column(name = "username")
+    private String username;
 
-  
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "nickname")
+    private String nickname;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "phone")
+    private String phone;
 }
